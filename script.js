@@ -1,61 +1,38 @@
-function loadDataFromStorage() {
-  let list = JSON.parse(window.localStorage.getItem('bookshelf'));
-  if (!list) {
-    // If it is empty then fill some data to work
-    list = [
-      {
-        id: 0,
-        title: 'Book 1',
-        author: 'Test test',
-      },
-      {
-        id: 1,
-        title: 'Book 2',
-        author: 'Test test',
-      },
-      {
-        id: 2,
-        title: 'Book 3',
-        author: 'Test test',
-      },
-      {
-        id: 3,
-        title: 'Book 4',
-        author: 'Test test',
-      },
-    ];
+class BookShelf {
+  constructor() {
+    this.#loadDataFromStorage();
   }
-  return list;
-}
 
-function saveData(bookList) {
-  window.localStorage.setItem('bookshelf', JSON.stringify(bookList));
-}
-
-function addBook(title, author, bookList) {
-  let index = 0;
-  if (bookList.length !== 0) {
-    index = bookList[bookList.length - 1].id + 1;
+  #loadDataFromStorage() {
+    this.bookList = JSON.parse(window.localStorage.getItem('bookshelf'));
+    if (!this.bookList) this.bookList = [];
   }
-  bookList.push({
-    id: index,
-    title,
-    author,
-  });
-}
 
-function BookShelf() {
-  this.bookList = loadDataFromStorage();
-  // Add functions to delete and to add a book
-  this.removeBook = (id) => {
+  saveData() {
+    window.localStorage.setItem('bookshelf', JSON.stringify(this.bookList));
+  }
+
+  addBook(title, author) {
+    let index = 0;
+    if (this.bookList.length !== 0) {
+      index = this.bookList[this.bookList.length - 1].id + 1;
+    }
+    this.bookList.push({
+      id: index,
+      title,
+      author,
+    });
+  }
+
+  removeBook(id) {
     this.bookList = this.bookList.filter((book) => book.id !== Number(id));
-  };
+  }
 }
 
 const gBookShelf = new BookShelf();
 
 function displayBooks(bookList) {
-  saveData(bookList);
+  gBookShelf.saveData(bookList);
   const booksContainer = document.querySelector('.books-container');
   const booksTemplate = document.getElementById('books-template');
   booksContainer.innerHTML = '';
@@ -85,7 +62,7 @@ function setListeners() {
         author.reportValidity();
         return;
       }
-      addBook(title.value, author.value, gBookShelf.bookList);
+      gBookShelf.addBook(title.value, author.value, gBookShelf.bookList);
       title.value = '';
       author.value = '';
       displayBooks(gBookShelf.bookList);
