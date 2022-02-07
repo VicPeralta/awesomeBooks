@@ -35,7 +35,7 @@ function saveData(bookList) {
 function addBook(title, author, bookList) {
   let index = 0;
   if (bookList.length !== 0) {
-    index = bookList.length;
+    index = bookList[bookList.length - 1].id + 1;
   }
   bookList.push({
     id: index,
@@ -75,9 +75,19 @@ function setListeners() {
       displayBooks(gBookShelf.bookList);
     }
     if (e.target.matches('.add-btn')) {
-      const title = document.getElementById('title').value;
-      const author = document.getElementById('author').value;
-      addBook(title, author, gBookShelf.bookList);
+      const title = document.getElementById('title');
+      const author = document.getElementById('author');
+      if (!title.checkValidity()) {
+        title.reportValidity();
+        return;
+      }
+      if (!author.checkValidity()) {
+        author.reportValidity();
+        return;
+      }
+      addBook(title.value, author.value, gBookShelf.bookList);
+      title.value = '';
+      author.value = '';
       displayBooks(gBookShelf.bookList);
     }
   });
