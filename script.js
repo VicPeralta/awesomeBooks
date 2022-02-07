@@ -50,6 +50,10 @@ function loadDataFromStorage() {
   return list;
 }
 
+function saveData(bookList) {
+  window.localStorage.setItem('bookshelf', JSON.stringify(bookList));
+}
+
 function addBook(title, author, bookList) {
   let index = 0;
   
@@ -72,6 +76,7 @@ function BookShelf() {
 const gBookShelf = new BookShelf();
 
 function displayBooks(bookList) {
+  saveData(bookList);
   const booksContainer = document.querySelector('.books-container');
   const booksTemplate = document.getElementById('books-template');
   booksContainer.innerHTML = '';
