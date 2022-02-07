@@ -1,25 +1,3 @@
-const bookList = [
-  {
-    id: 0,
-    title: 'Book 1',
-    author: 'Test test',
-  },
-  {
-    id: 1,
-    title: 'Book 2',
-    author: 'Test test',
-  },
-  {
-    id: 2,
-    title: 'Book 3',
-    author: 'Test test',
-  },
-  {
-    id: 3,
-    title: 'Book 4',
-    author: 'Test test',
-  },
-];
 function loadDataFromStorage() {
   let list = JSON.parse(window.localStorage.getItem('bookshelf'));
   if (!list) {
@@ -56,21 +34,22 @@ function saveData(bookList) {
 
 function addBook(title, author, bookList) {
   let index = 0;
-  
   if (bookList.length !== 0) {
     index = bookList.length;
   }
-  
   bookList.push({
     id: index,
-    title: title,
-    author: author
+    title,
+    author,
   });
 }
 
 function BookShelf() {
   this.bookList = loadDataFromStorage();
   // Add functions to delete and to add a book
+  this.removeBook = (id) => {
+    this.bookList = this.bookList.filter((book) => book.id !== Number(id));
+  };
 }
 
 const gBookShelf = new BookShelf();
@@ -92,9 +71,9 @@ function displayBooks(bookList) {
 function setListeners() {
   document.addEventListener('click', (e) => {
     if (e.target.matches('.remove-book')) {
-      console.log(e.target.dataset.id);
+      gBookShelf.removeBook(e.target.dataset.id);
+      displayBooks(gBookShelf.bookList);
     }
-
     if (e.target.matches('.add-btn')) {
       const title = document.getElementById('title').value;
       const author = document.getElementById('author').value;
@@ -102,8 +81,6 @@ function setListeners() {
       displayBooks(gBookShelf.bookList);
     }
   });
-
-
 }
 
 displayBooks(gBookShelf.bookList);
