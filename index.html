@@ -10,28 +10,28 @@
 
 <body>
   <h1>Awesome Books</h1>
+  <template id="books-template">
+    <ul class="book-card">
+      <li class="title">Book 1</li>
+      <li class="author">Test test</li>
+      <li>
+        <button type="button" class="remove-book" data-id="">Remove</button>
+      </li>
+    </ul>
+    <hr>
+  </template>
   <div class="books-container">
-    <template id="books-template">
-      <ul class="book-card">
-        <li class="title">Book 1</li>
-        <li class="author">Test test</li>
-        <li>
-          <button type="button" class="remove-book" data-id="">Remove</button>
-        </li>
-      </ul>
-      <hr>
-    </template>
   </div>
 
   <ul class="add-book">
     <li>
-      <input type="text" name="title" id="title" placeholder="Title">
+      <input type="text" name="title" id="title" placeholder="Title" required>
     </li>
     <li>
-      <input type="text" name="author" id="author" placeholder="Author">
+      <input type="text" name="author" id="author" placeholder="Author" required>
     </li>
     <li>
-      <button type="button" class="add-book">Add</button>
+      <button type="button" class="add-btn">Add</button>
     </li>
   </ul>
 
