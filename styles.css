@@ -8,6 +8,10 @@
   font-family: 'Roboto', sans-serif;
 }
 
+button {
+  cursor: pointer;
+}
+
 main {
   display: flex;
   flex-direction: column;
@@ -16,7 +20,7 @@ main {
 }
 
 #book-list {
-  width: 100%;
+  width: 70%;
   text-align: center;
   padding: 5%;
 }
@@ -32,6 +36,7 @@ main {
 .book-card {
   display: flex;
   padding: 2%;
+  flex-wrap: wrap;
 }
 
 .book-card:nth-child(odd) {
@@ -47,11 +52,11 @@ main {
   text-align: end;
 }
 
-.title:before {
+.title::before {
   content: '"';
 }
 
-.title:after {
+.title::after {
   content: '" by ';
   white-space: pre;
 }
@@ -60,4 +65,70 @@ main {
   padding: 8px;
   border: 1px solid rgb(0, 0, 0);
   box-shadow: 10px 5px 5px rgb(0, 0, 0);
+}
+
+#add {
+  width: 40%;
+}
+
+#add hr {
+  background-color: black;
+  border: 1px solid black;
+  width: 30%;
+  margin: 20px auto;
+}
+
+#add h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#add ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+#add ul li {
+  list-style: none;
+  width: 100%;
+}
+
+#add input {
+  border: 2px solid black;
+  padding: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+#add button {
+  padding: 10px 20px;
+  box-shadow: 5px 2px 2px rgb(0, 0, 0);
+}
+
+#add li:last-child {
+  display: flex;
+  justify-content: end;
+}
+
+@media (max-width: 700px) {
+  #book-list {
+    width: 100%;
+  }
+
+  #add {
+    width: 90%;
+  }
+
+  .book-card {
+    flex-direction: column;
+    padding: 2%;
+    flex-wrap: wrap;
+  }
+
+  .book-card li:last-child {
+    flex: 1;
+    text-align: center;
+    margin: 10px;
+  }
 }
