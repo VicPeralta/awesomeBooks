@@ -5,36 +5,42 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
   <title>Awesome books</title>
 </head>
 
 <body>
-  <h1>Awesome Books</h1>
-  <template id="books-template">
-    <ul class="book-card">
-      <li class="title">Book 1</li>
-      <li class="author">Test test</li>
-      <li>
-        <button type="button" class="remove-book" data-id="">Remove</button>
-      </li>
-    </ul>
-    <hr>
-  </template>
-  <div class="books-container">
-  </div>
-
-  <ul class="add-book">
-    <li>
-      <input type="text" name="title" id="title" placeholder="Title" required>
-    </li>
-    <li>
-      <input type="text" name="author" id="author" placeholder="Author" required>
-    </li>
-    <li>
-      <button type="button" class="add-btn">Add</button>
-    </li>
-  </ul>
-
+  <main>
+    <section id="book-list">
+      <h1>All awesome Books</h1>
+      <template id="books-template">
+        <ul class="book-card">
+          <li class="title">Book 1</li>
+          <li class="author">Test test</li>
+          <li>
+            <button type="button" class="remove-book" data-id="">Remove</button>
+          </li>
+        </ul>
+      </template>
+      <div class="books-container">
+      </div>
+    </section>
+    <section id="add">
+      <hr>
+      <h2>Add a new book</h2>
+      <ul class="add-book">
+        <li>
+          <input type="text" name="title" id="title" placeholder="Title" required>
+        </li>
+        <li>
+          <input type="text" name="author" id="author" placeholder="Author" required>
+        </li>
+        <li>
+          <button type="button" class="add-btn">Add</button>
+        </li>
+      </ul>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>

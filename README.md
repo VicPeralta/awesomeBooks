@@ -11,17 +11,30 @@
 - CSS
 - Javascript
 
+## Live Demo
+[Live Demo](https://vicperalta.github.io/awesomeBooks/)
+
+## Getting Started
+
+To get a local copy up and running follow these simple example steps.  
+
+1.- Clone the repository using this command:
+`git@github.com:VicPeralta/awesomeBooks.git` 
+
+2.- To see the main page open index.html with your Internet browser.  
+
+3.- To see the code open the project in your code editor of your preference.
+
+
 ## Author
 
 👤 **Victor Peralta**
+- GitHub: [@VicPeralta](https://github.com/VicPeralta)
 
 👤 **Leonardo Pires Goss**
 
-- GitHub: [@VicPeralta](https://github.com/VicPeralta)
 - GitHub: [@leopiresgoss](https://github.com/leopiresgoss)
 
-## Live Demo
-[Live Demo](https://vicperalta.github.io/awesomeBooks/)
 
 ## 🤝 Contributing
 
