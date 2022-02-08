@@ -60,6 +60,11 @@ nav {
   padding-right: 8px;
 }
 
+.selected {
+  font-weight: bold;
+  color: steelblue;
+}
+
 .navlinks li:last-child {
   border: none;
   padding-right: 0;
@@ -185,6 +190,7 @@ main {
   margin: 10px auto;
   width: 80%;
 }
+
 #contact ul li {
   list-style: disc;
   margin: 10px;
