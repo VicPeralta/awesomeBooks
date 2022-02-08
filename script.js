@@ -29,6 +29,29 @@ class BookShelf {
   }
 }
 
+function getEndDay(day) {
+  const iDay = Number(day);
+  if (iDay > 3 && iDay < 21) return 'th';
+  switch (iDay % 10) {
+    case 1: return 'st';
+    case 2: return 'nd';
+    case 3: return 'rd';
+    default: return 'th';
+  }
+}
+
+function updateDate() {
+  const dt = new Date();
+  let month = dt.toLocaleString('en-US', { month: 'long' });
+  const day = dt.toLocaleString('en-US', { day: 'numeric' });
+  const endDay = getEndDay(day);
+  const year = dt.toLocaleString('en-US', { year: 'numeric' });
+  const time = dt.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric' });
+  month += ` ${day}${endDay} ${year}, ${time}`;
+  document.querySelector('.datetime p').textContent = month;
+}
+
+window.setInterval(updateDate, 1000);
 const gBookShelf = new BookShelf();
 
 function displayBooks(bookList) {
@@ -43,6 +66,20 @@ function displayBooks(bookList) {
     bookCard.querySelector('.remove-book').setAttribute('data-id', book.id);
     booksContainer.appendChild(bookCard);
   });
+}
+
+function navToSection(element, sectionName) {
+  const navLinks = document.querySelectorAll('.navlinks li a');
+  navLinks.forEach((link) => {
+    link.classList.remove('selected');
+  });
+  element.classList.add('selected');
+  const section = document.querySelector(sectionName);
+  const sections = document.querySelectorAll('section');
+  sections.forEach((section) => {
+    section.classList.remove('active');
+  });
+  section.classList.add('active');
 }
 
 function setListeners() {
@@ -66,6 +103,12 @@ function setListeners() {
       title.value = '';
       author.value = '';
       displayBooks(gBookShelf.bookList);
+    }
+    if (e.target.matches('.navlinks li a')) {
+      const { href } = e.target;
+      const index = href.indexOf('#');
+      const section = href.substring(index);
+      navToSection(e.target, section);
     }
   });
 }
