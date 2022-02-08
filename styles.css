@@ -8,6 +8,18 @@
   font-family: 'Roboto', sans-serif;
 }
 
+.active {
+  display: block;
+}
+
+.hidden {
+  display: none;;
+}
+
+section {
+  display: none;
+}
+
 button {
   cursor: pointer;
 }
@@ -157,6 +169,25 @@ main {
 #add li:last-child {
   display: flex;
   justify-content: end;
+}
+
+#contact h2 {
+  margin: 20px;
+  text-align: center;
+}
+#contact p {
+  margin: 20px;
+  text-align: left;
+}
+
+#contact ul {
+  padding: 10px;
+  margin: 10px auto;
+  width: 80%;
+}
+#contact ul li {
+  list-style: disc;
+  margin: 10px;
 }
 
 footer {
