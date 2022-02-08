@@ -68,6 +68,20 @@ function displayBooks(bookList) {
   });
 }
 
+function navToSection(element, sectionName) {
+  const navLinks = document.querySelectorAll('.navlinks li a');
+  navLinks.forEach((link) => {
+    link.classList.remove('selected');
+  });
+  element.classList.add('selected');
+  const section = document.querySelector(sectionName);
+  const sections = document.querySelectorAll('section');
+  sections.forEach((section) => {
+    section.classList.remove('active');
+  });
+  section.classList.add('active');
+}
+
 function setListeners() {
   document.addEventListener('click', (e) => {
     if (e.target.matches('.remove-book')) {
@@ -91,26 +105,12 @@ function setListeners() {
       displayBooks(gBookShelf.bookList);
     }
     if (e.target.matches('.navlinks li a')) {
-      const href = e.target.href;
+      const { href } = e.target;
       const index = href.indexOf('#');
       const section = href.substring(index);
       navToSection(e.target, section);
     }
   });
-}
-
-function navToSection(element, sectionName) {
-  const navLinks = document.querySelectorAll('.navlinks li a');
-  navLinks.forEach((link) => {
-    link.classList.remove('selected')
-  });
-  element.classList.add('selected');
-  const section = document.querySelector(sectionName);
-  const sections = document.querySelectorAll('section');
-  sections.forEach((section) => {
-    section.classList.remove('active');
-  });
-  section.classList.add('active');
 }
 
 displayBooks(gBookShelf.bookList);
