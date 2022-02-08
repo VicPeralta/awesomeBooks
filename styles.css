@@ -12,6 +12,50 @@ button {
   cursor: pointer;
 }
 
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  padding: 16px;
+  width: 100%;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid black;
+  padding: 8px 16px;
+}
+
+.navlinks {
+  display: flex;
+}
+
+.navlinks li {
+  margin-left: 8px;
+  border-right: 2px solid black;
+  padding-right: 8px;
+}
+
+.navlinks li:last-child {
+  border: none;
+  padding-right: 0;
+}
+
+.datetime {
+  text-align: right;
+  padding: 8px 0;
+}
+
 main {
   display: flex;
   flex-direction: column;
